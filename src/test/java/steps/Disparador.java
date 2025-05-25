@@ -6,9 +6,9 @@ import org.openqa.selenium.TakesScreenshot;
 import io.cucumber.java.*;
 import pages.BasePage;
 
-public class Hooks extends BasePage{
+public class Disparador extends BasePage{
     
-    public Hooks(){
+    public Disparador(){
         super(driver);
     }
 
@@ -16,7 +16,7 @@ public class Hooks extends BasePage{
     public void tearDown(Scenario escenario){
         
         if (escenario.isFailed()){
-            escenario.log("El escenario fallo. Por favor revisar la imagen adjunta en este reporte");
+            escenario.log("Revisar la imagen adjunta en este reporte del escenario fallido.");
             final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             escenario.attach(screenshot, "image/png", "Pantallazo del error");
         }
@@ -24,7 +24,7 @@ public class Hooks extends BasePage{
     }
 
     @AfterStep
-    public void tomarCapturaCadaPaso(Scenario escenario) {
+    public void tomarCapturaPasos(Scenario escenario) {
         final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             escenario.attach(screenshot, "image/png", "Pantallazo del paso");
     }
