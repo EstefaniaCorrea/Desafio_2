@@ -2,54 +2,54 @@ package pages;
 
 public class FormularioPage extends BasePage {
 
-    private String tituloNombre = "//*[@id=\"grupo__nombre\"]/label"; // Localizador por Xpath
-    private String campoNombre = "nombre"; // Localizador por nombre
-    private String alertaNombre = "#grupo__nombre .formulario__input-error"; // Localizador por Selector Css
+    private String tituloEtiquetaNombre = "//*[@id=\"grupo__nombre\"]/label"; // Seleccionar por Xpath
+    private String campoNombre = "nombre"; // Seleccionar por nombre
+    private String campoAlertaNombre = "#grupo__nombre .formulario__input-error"; // Seleccionar por Css
 
-    private String tituloEmail = "//*[@id=\"grupo__email\"]/label"; // Localizador por Xpath
-    private String campoEmail = "email"; // Localizador por nombre
-    private String alertaEmail = "#grupo__email .formulario__input-error"; // Localizador por Selector Css
+    private String tituloEtiquetaEmail = "//*[@id=\"grupo__email\"]/label"; // Seleccionar por Xpath
+    private String campoEmail = "email"; // Seleccionar por nombre
+    private String campoAlertaEmail = "#grupo__email .formulario__input-error"; // Seleccionar por Css
 
-    private String tituloBarrio = "//*[@id=\"grupo__barrio\"]/label"; // Localizador por Xpath
-    private String campoBarrio = "barrio"; // Localizador por nombre
-    private String alertaBarrio = "#grupo__barrio .formulario__input-error"; // Localizador por Selector Css
+    private String tituloEtiquetaBarrio = "//*[@id=\"grupo__barrio\"]/label"; // Seleccionar por Xpath
+    private String campoBarrio = "barrio"; // Seleccionar por nombre
+    private String campoAlertaBarrio = "#grupo__barrio .formulario__input-error"; // Seleccionar por Css
 
-    private String tituloAsunto = "//*[@id=\"grupo__asunto\"]/label"; // Localizador por Xpath
-    private String campoAsunto = "asunto"; // Localizador por nombre
-    private String alertaAsunto = "#grupo__asunto .formulario__input-error"; // Localizador por Selector Css
+    private String tituloEtiquetaAsunto = "//*[@id=\"grupo__asunto\"]/label"; // Seleccionar por Xpath
+    private String campoAsunto = "asunto"; // Seleccionar por nombre
+    private String campoAlertaAsunto = "#grupo__asunto .formulario__input-error"; // Seleccionar por Css
 
-    private String tituloMensaje = "//*[@id=\"formulario\"]/div[5]/label"; // Localizador por Xpath
-    private String campoMensaje = "Mensaje"; // Localizador por nombre
+    private String tituloEtiquetaMensaje = "//*[@id=\"formulario\"]/div[5]/label"; // Seleccionar por Xpath
+    private String campoMensaje = "Mensaje"; // Seleccionar por nombre
 
-    private String btnEnviar = "//button[@type='submit']";
+    private String botonEnviar = "//button[@type='submit']";
 
-    private String txtNombre = "Camila Torres";
-    private String txtBarrio = "El Pinar";
-    private String txtEmail = "camila.torres.ejemplo@gmail.com";
-    private String txtAsunto = "Solicitud de información";
-    private String txtMensaje = "Buenas tardes, me gustaría recibir más información sobre los servicios que ofrecen y los horarios de atención. Agradezco su pronta respuesta.";
+    private String txtNombre = "Edison Alvarez"; // Nombre de ejemplo
+    private String txtBarrio = "La cumbre"; // Barrio de ejemplo
+    private String txtEmail = "edison_alvarez_ejem@gmail.com"; // Email de ejemplo
+    private String txtAsunto = "Por favor, necesito información"; // Asunto de ejemplo
+    private String txtMensaje = "Solicito información detallada sobre los servicios disponibles y los horarios de atención. Quedo atento a su pronta respuesta. Muchas gracias."; // Mensaje de ejemplo
 
     private String mensaje[] = {
-        "El nombre debe ser mayor a 4 letras y no debe incluir caracteres especiales", // el indice para este mensaje es el 0
-        "El Email debe ser mayor a 4 caracteres y debe llevar @ y . no debe incluir caracteres especiales", //el indice para este mensaje es el 1
-        "El barrio debe ser mayor a 4 letras", // el indice para este mensaje es el 2
-        "El asunto debe ser mayor a 4 letras" // el indice para este mensaje es el 3
-    };
+    "El nombre debe contener al menos 5 letras y no aceptar símbolos", // el indice para este mensaje es el 0
+    "El correo electrónico debe tener más de 4 caracteres, incluir '@' y un dominio válido", // el indice para este mensaje es el 1
+    "El barrio debe tener un mínimo de 5 letras sin números ni caracteres especiales", // el indice para este mensaje es el 2
+    "El asunto debe ser descriptivo y contener al menos 5 letras" // el indice para este mensaje es el 3
+};
 
-    private String titulos[] = { "Tu Nombre:", "Tu Email:", "Barrio:", "Asunto:", "Mensaje:" };
-    private String mensajesPopUp[] = {"UPPPPS ALGO HA FALLADO :(", "El Formulario se ha enviado correctamente"};
+    private String titulos[] = { "Nombre:", "Email:", "Barrio:", "Asunto:", "Mensaje:" };
+    private String mensajesPopUp[] = {"Algo salió mal :c", "El Formulario envió correctamente"};
 
     // Constructor
     public FormularioPage() {
         super(driver);
     }
 
-    // Metodo para navegar a la URL indicada
+    // URL del formulario
     public void navegarA() {
         abrirUrl("http://64.227.54.255/Softesting/Frontend/Caso1.html");
     }
 
-    // Metodo para llenar los campos de texto del formulario
+    //Llenar los campos de texto del formulario
     public void textoCamposCompleta() {
         escribir(campoNombre, txtNombre);
         escribir(campoBarrio, txtBarrio);
@@ -58,7 +58,7 @@ public class FormularioPage extends BasePage {
         escribir(campoMensaje, txtMensaje);
     }
 
-    // Metodo para hacer que salten las alertas por no ingresar datos al formulario
+    // Se muestran las alertas por no ingresar datos al formulario
     public void sinTextoCampos() {
         escribir(campoNombre, "");
         escribir(campoBarrio, "");
@@ -67,7 +67,7 @@ public class FormularioPage extends BasePage {
         escribir(campoMensaje, "");
     }
 
-    // Metodo para ingresar datos y el nombre con 3 letras
+    // Ingresar datos y el nombre con 3 letras
     public void textoNombre(String nombre) {
         escribir(campoNombre, nombre);
         escribir(campoBarrio, txtBarrio);
@@ -76,7 +76,7 @@ public class FormularioPage extends BasePage {
         escribir(campoMensaje, txtMensaje);
     }
 
-    // Metodo para ingresar el Correo con datos faltantes
+    // Ingresar el Correo con datos incompletos
     public void datosFaltanteEmail(String correo) {
         escribir(campoNombre, txtNombre);
         escribir(campoBarrio, txtBarrio);
@@ -85,71 +85,71 @@ public class FormularioPage extends BasePage {
         escribir(campoMensaje, txtMensaje);
     }
 
-    // Metodo para validar que aparece una alerta en nombre
+    // Validar una alerta en nombre
     public void visibiMensaNombre() {
-        validarVisuvilidad(alertaNombre, mensaje[0]);
+        validarVisuvilidad(campoAlertaNombre, mensaje[0]);
     }
 
-    // Metodo para validar que aparece una alerta en email
+    // Validar alerta en email
     public void visibiMensaEmail() {
-        validarVisuvilidad(alertaEmail, mensaje[1]);
+        validarVisuvilidad(campoAlertaEmail, mensaje[1]);
     }
 
-    // Metodo para validar que aparece una alerta en cada campo
+    // Validar alerta en cada campo
     public void alertaTodosCampos(){
-        elementoPresente(alertaNombre);
-        elementoPresente(alertaEmail);
-        elementoPresente(alertaBarrio);
-        elementoPresente(alertaAsunto);
+        elementoPresente(campoAlertaNombre);
+        elementoPresente(campoAlertaEmail);
+        elementoPresente(campoAlertaBarrio);
+        elementoPresente(campoAlertaAsunto);
     }
 
-    // Metodo para validar que No aparece una alerta en nombre
+    // Validar que no aparece una alerta en nombre
     public void noVisibiMensaNombre() {
-        validadInvisibilidad(alertaNombre, mensaje[0]);
+        validadInvisibilidad(campoAlertaNombre, mensaje[0]);
     }
 
-    // Metodo para validar que No aparece una alerta en email
+    // Validar que no aparece una alerta en email
     public void noVisibiMensaEmail() {
-        validadInvisibilidad(alertaEmail, mensaje[1]);
+        validadInvisibilidad(campoAlertaEmail, mensaje[1]);
     }
 
-    // Metodo para validar que No aparece una alerta en barrio
+    // Validar que no aparece una alerta en barrio
     public void noVisibiMensaBarrio() {
-        validadInvisibilidad(alertaBarrio, mensaje[2]);
+        validadInvisibilidad(campoAlertaBarrio, mensaje[2]);
 
     }
 
-    // Metodo para validar que No aparece una alerta en asunto
+    // Validar que no aparece una alerta en asunto
     public void noVisibiMensaAsunto() {
-        validadInvisibilidad(alertaAsunto, mensaje[3]);
+        validadInvisibilidad(campoAlertaAsunto, mensaje[3]);
     }
 
-    // Metodo para validar que no aparece ninguna alerta
+    // Validar que no aparece ninguna alerta
     public void noAlertas() {
-        elementoNoPresente(alertaNombre);
-        elementoNoPresente(alertaEmail);
-        elementoNoPresente(alertaBarrio);
-        elementoNoPresente(alertaAsunto);
+        elementoNoPresente(campoAlertaNombre);
+        elementoNoPresente(campoAlertaEmail);
+        elementoNoPresente(campoAlertaBarrio);
+        elementoNoPresente(campoAlertaAsunto);
     }
 
-    // Metodo paa validar que la ortografia de los titulos esta bien
+    // Validar que la ortografia de los titulos esta bien
     public void validarTexto() {
-        identificarTexto(tituloNombre, titulos[0]);
-        identificarTexto(tituloEmail, titulos[1]);
-        identificarTexto(tituloBarrio, titulos[2]);
-        identificarTexto(tituloAsunto, titulos[3]);
-        identificarTexto(tituloMensaje, titulos[4]);
+        identificarTexto(tituloEtiquetaNombre, titulos[0]);
+        identificarTexto(tituloEtiquetaEmail, titulos[1]);
+        identificarTexto(tituloEtiquetaBarrio, titulos[2]);
+        identificarTexto(tituloEtiquetaAsunto, titulos[3]);
+        identificarTexto(tituloEtiquetaMensaje, titulos[4]);
     }
 
-    // Metodo para validar que se envio bien un formulario
+    // Validar que se envio bien un formulario
     public void envioCorrectoFormulario(){
-        hacerClicBoton(btnEnviar);
+        hacerClicBoton(botonEnviar);
         aceptarAlerta(mensajesPopUp[1]);
     }
 
-    // Metodo para validar que se envio bien un formulario
+    // Validar que se envio bien un formulario
     public void envioErradoFormulario(){
-        hacerClicBoton(btnEnviar);
+        hacerClicBoton(botonEnviar);
         aceptarAlerta(mensajesPopUp[0]);
     }
 }
